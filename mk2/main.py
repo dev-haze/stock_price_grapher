@@ -4,32 +4,36 @@ import FinanceDataReader as fdr
 chart = graph.C_chart()#만들어 놓은 graph.py 객체 생성
 cmd = ""#input받은거 넣어둘 변수
 
-while(cmd != 'quit'): #quit이 입력되면 바로 종료. 그렇지 않으면 계속 루프
+
+while(True): #quit이 입력되면 바로 종료. 그렇지 않으면 계속 루프
     cmd = input()
-
-    if(cmd == 'add'):#add가 입력되면
-        print("code : ")
-        code = input()#종목코드 입력받기
-        data = fdr.DataReader(symbol = code)#해당 종목코드로 종목 검색
-        chart.add(data['Open'])#차트에 선 추가
+    cmd = cmd.split()
     
-    elif(cmd == 'show'): 
+    if(cmd[0] == 'add'):
+        data = fdr.DataReader(symbol = cmd[1])
+        chart.add(data['Open'])
+    
+
+    elif(cmd[0] == 'show'): 
         chart.show()
-
     
-    
-
         
-    elif(cmd == 'clear'):
+    elif(cmd[0] == 'clear'):
         chart.init()
 
-    elif(cmd == 'help'):
+
+
+
+    elif(cmd[0] == 'help'):
         print("quit : quit stock_grapher")
         print("add  : add stock_code to graph")
         print("show :  show graph")
 
-    elif cmd == 'dev_example':
+    elif cmd[0] == 'dev_example':
         print("030210 kt, 032640 lg, 005930 samsung")                          
+
+    elif cmd[0] == 'quit':
+        break
 
 
 '''
