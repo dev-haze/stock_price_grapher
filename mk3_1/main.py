@@ -12,14 +12,16 @@ while(True): #quit이 입력되면 바로 종료. 그렇지 않으면 계속 루
     #<주요 명령어들>---------------
     if(cmd[0] == 'add'):#종목코드 입력 & 종목 그래프 따오기
         data = fdr.DataReader(symbol = cmd[1])
-        chart.add(data['Open'])
+        chart.add(data['Close'])
     
-    elif(cmd[0] == 'show'): 
+    elif(cmd[0] == 'show'): #그래프 그리기
         chart.show()
         
-    elif(cmd[0] == 'clear'):
+    elif(cmd[0] == 'clear'):#차트 초기화
         chart.init()
 
+    #elif cmd[0] == 'ls': #종목 리스트 
+        
 
 
     #<기타>-----------------------------
@@ -28,7 +30,7 @@ while(True): #quit이 입력되면 바로 종료. 그렇지 않으면 계속 루
         print("add  : add stock_code to graph")
         print("show :  show graph")
 
-    elif cmd[0] == 'dev_example':
+    elif cmd[0] == 'dev-ex':
         print("030210 kt, 032640 lg, 005930 samsung")                          
 
     elif cmd[0] == 'quit':
