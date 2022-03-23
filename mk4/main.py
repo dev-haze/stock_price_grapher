@@ -1,4 +1,6 @@
-import C_func
+from C_func import C_main
 
-main = C_func.main()
+main = C_main()
 main.run()
+
+

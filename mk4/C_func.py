@@ -9,11 +9,8 @@ class C_main:
     chart = graph.C_chart()
     cmd = ""
     stock_ls = []
-
+    
     #create
-    def __init__(self):
-        stock = C_stock()
-        self.stock_ls.append(stock)
     #------------------------------------   
     def add(self,code,name):
         stock = C_stock()
@@ -30,14 +27,14 @@ class C_main:
         
     def show(self):
         for stock in self.stock_ls:
-            data = fdr.DataReader(symbol=stock.code)
+            data = fdr.DataReader(symbol = stock.code)
             self.chart.add(data['Close'],stock.name)            
         self.chart.show()
 
     def clear(self):
         self.chart.init()
 
-    def help():
+    def help(self):
         print("ls----------------: show stock list that was added by user")
         print("add (code) (name)-: add stock to graph")
         print("delete (name) ----: delete stock from stock list")
@@ -45,7 +42,7 @@ class C_main:
         print("clear-------------: remove_all stock chart from canvas ")
         print("\n")
         print("quit--------------: quit stock_grapher")
-        print("dev-examples------: print stock code examples")
+        print("ex------: print stock code examples")
     def ex(show):
         print("030210 kt")
         print("032640 kt")
@@ -53,7 +50,6 @@ class C_main:
                 
             
     #------------------------------------
-    
     def run(self):
         while(True):
             cmd = input()
@@ -68,22 +64,16 @@ class C_main:
                 self.chart.init()
             elif cmd[0] == 'show':
                 self.chart.show()
+
                 
             elif cmd[0] == 'help':
-                print("add (code) (name) : add stock_code to graph")
-                print("show : show graph")
-                print("quit : quit stock_grapher")
-                print("dev-ex : print stock code examples")
-            elif cmd[0] == 'q':
-                break
+                self.help()
             elif cmd[0]=='ex':
                 self.ex()
+            elif cmd[0] == 'quit':
+                break
             else: 
                 continue
                 
 
 
-
-
-main = C_main()
-main.run()
